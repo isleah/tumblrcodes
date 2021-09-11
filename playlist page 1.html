@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>playlist page</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+</head>
+
+<!-- 
+
+    READ FIRST 
+    You're gonna need to know some basic code to use this page 
+    but I added comments along the way to make the setup easy :)
+    
+    made by leah at viibecheque.tumblr.com <3
+
+-->
+
+<style type="text/css">
+
+    /* general styling, everything will be centered,. you can change it as needed */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: url("");
+        background-size: cover;
+        font-family: Arial;
+        font-size: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    /* title styles */
+
+    h1 {
+        display: inline;
+        color: #F8EFBA;
+        text-shadow: 3px 4px 0px #000;
+        padding: 5px;
+    }
+
+    /* song styles */
+
+    .btn {
+        background: none;
+        display: block;
+        border: none;
+        color: #ccc;
+        font-size: 40px;
+        font-family: Arial;
+        letter-spacing: -2px;
+        cursor: pointer;
+
+    }
+
+
+    /* image size */
+
+    .header {
+        width: 200px;
+    }
+
+    /* change the odd song color */
+
+    .btn:nth-child(odd) {
+        color: #636e72;
+    }
+
+    /* change song hover color */
+
+    .btn:hover {
+        color: #000;
+        cursor: crosshair;
+        transition: 0.4s;
+    }
+
+    #icons {
+        position: absolute;
+        display: block;
+        margin-top: 8%;
+    }
+
+    /* change icon color */
+
+    .fas {
+        color: #000;
+        font-size: 20px;
+    }
+
+</style>
+
+<body>
+
+    <!-- 
+        add your title
+    font awesome cdn is installed so 
+    you can add more icons if you like
+
+-->
+
+    Your <h1>Title Here</h1>
+
+    <!-- if you want a sidebar image vs a title uncomment the following 
+
+        <img src="" class="header">
+-->
+
+    <div id="icons">
+
+        <a href=""><i class="fas fa-home"></i></a>
+        <a href="https://www.tumblr.com/dashboard"><i class="fas fa-undo-alt"></i></a>
+        <a href="https://viibecheque.tumblr.com/"><i class="fas fa-seedling"></i></a>
+
+        <!-- you can change the icon but please dont remove the credit! -->
+
+    </div>
+
+    <!-- 
+
+    ADDING SONGS
+    so the code is 
+
+     <audio id="song name in lowercase" src="mp3 link"></audio>
+
+     and thats it really, i left samples so you can see
+
+  -->
+    <audio id="view" src="https://a.tumblr.com/tumblr_noi0anCs7x1ry65bao1.mp3"></audio>
+    <audio id="jump" src="https://a.tumblr.com/tumblr_p9fm6pTGKe1wttn74o1.mp3"></audio>
+
+    <div id="buttons"></div>
+
+    <script>
+        // all youre doing here is adding the song names in the brackets followed by , so that the song is called to play
+        // ['song', 'song' 'song']
+        // dont change anything else cause that will mess the code up :<
+
+        const sounds = ['view', 'jump']
+
+        // change only the above code 
+
+        sounds.forEach(sound => {
+            const btn = document.createElement('button')
+            btn.classList.add('btn')
+
+            btn.innerText = sound
+
+            btn.addEventListener('click', () => {
+                stopSongs()
+
+                document.getElementById(sound).play()
+            })
+
+            document.getElementById('buttons').appendChild(btn)
+        })
+
+        function stopSongs() {
+            sounds.forEach(sound => {
+                const song = document.getElementById(sound)
+
+                song.pause()
+                song.currentTime = 0;
+            })
+        }
+    </script>
+</body>
+
+</html>
